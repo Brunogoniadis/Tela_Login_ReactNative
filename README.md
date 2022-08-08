@@ -50,6 +50,8 @@ src\services\firebaseConnection.js
 
 ● Todas as cores dos componentes são personalizáveis seguindo o caminho:
 
+src\pages\SignIn\styles.js
+
 | Componente        |             Linha              |                                                             
 | ----------------- | ---------------------------------------------------------------- |
 | Background        | 04 | src\pages\SignIn\styles.js |
