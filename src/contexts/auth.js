@@ -2,6 +2,8 @@ import React, {useState,createContext} from 'react';
 import { set } from 'react-native-reanimated';
 import firebase from '../services/firebaseConnection';
 export const AuthContext= createContext({});
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 function AuthProvider ({children}){
     const [ user,setUser] = useState(null);
@@ -25,7 +27,11 @@ function AuthProvider ({children}){
             })
         })
     }
-
+    async funcion storageUser(data){
+        await AsyncStorage.setItem('Auth_user', JSON.stringfy(data));
+    }
+    
+    
     return(
         <AuthContext.Provider value={{ signed:!! user, user, signUp}}>
             {children}
