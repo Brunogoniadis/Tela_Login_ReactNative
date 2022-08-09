@@ -66,13 +66,21 @@ function AuthProvider({ children }){
             alert(error.code);
         });
     }
-
+    //funcao logoff passada via contexto
+    async function signOut(){
+        await firebase.auth().signOut();
+        await AsyncStorage.clear()
+        .then( () => {setUser(null);
+        })
+    }
+    
+  
     async function storageUser(data){
         await AsyncStorage.setItem('Auth_user', JSON.stringify(data));
     }
 
     return(
-     <AuthContext.Provider value={{ signed: !!user , user, signUp, signIn }}>
+     <AuthContext.Provider value={{ signed: !!user , user, signUp, signIn, signOut }}>
          {children}
      </AuthContext.Provider>   
     );
